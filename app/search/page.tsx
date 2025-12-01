@@ -10,7 +10,7 @@ export default function SearchPage() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (!ticker.trim()) return;
-    
+    console.log('Searching for ticker:', ticker);
     router.push(`/results?ticker=${ticker}`);
   };
 
@@ -27,14 +27,14 @@ export default function SearchPage() {
           </h2>
         </div>
 
-        // Search Bar
+         {/* Search Bar */}
         <form onSubmit={handleSearch} className="space-y-6">
           <div className="relative">
             <input
               type="text"
               value={ticker}
               onChange={(e) => setTicker(e.target.value.toUpperCase())}
-              placeholder="BLK 524"
+              placeholder="FIG"
               className="w-full px-6 py-4 bg-white/50 backdrop-blur-sm border border-gray-300 
                          rounded-lg text-center text-lg font-light tracking-wider text-gray-800
                          placeholder:text-black-400 focus:outline-none focus:ring-2 
