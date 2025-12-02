@@ -3,10 +3,10 @@ import {Ticker} from "@/types";
 import getCollection from "@/db";
 import {TICKER_COLLECTION} from "@/db";
 
-export default async function createNewAlias(url: string, ticker: string): Promise<Ticker> {
-    console.log("Creating new alias");
+export default async function insertNewTicker(ticker: string, score: string): Promise<Ticker> {
     const a = {
         ticker: ticker,
+        IPO_Attractiveness_Score: score,
     };
 
     const collection = await getCollection(TICKER_COLLECTION);

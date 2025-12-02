@@ -1,6 +1,7 @@
 import React from "react";
 import { getIPOAnalysis } from "../../api/openai";
 import Link from "next/link";
+import insertNewTicker from "@/lib/insertNewTicker";
 
 interface PageProps {
   params: Promise<{ ticker: string }>;
@@ -9,6 +10,7 @@ interface PageProps {
 export default async function ReportPage({ params }: PageProps) {
   const { ticker } = await params;
   const analysis = await getIPOAnalysis(ticker);
+  await insertNewTicker(ticker, analysis.IPO_Attractiveness_Score);
 
   if (!analysis) {
     return (
