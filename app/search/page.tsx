@@ -1,18 +1,19 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
+import { analyzeIPO } from '../api/openai';
 
 export default function SearchPage() {
   const [ticker, setTicker] = useState('');
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!ticker.trim()) return;
-    console.log('Searching for ticker:', ticker);
-    router.push(`/results?ticker=${ticker}`);
-  };
+  // const handleSearch = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!ticker.trim()) return;
+  //   console.log('Searching for ticker:', ticker);
+  //   router.push(`/results?ticker=${ticker}`);
+  // };
 
   return (
     <div className="min-h-screen bg-[#C5E8E8] flex flex-col items-center justify-center px-4">
@@ -30,10 +31,11 @@ export default function SearchPage() {
         </div>
 
          {/* Search Bar */}
-        <form onSubmit={handleSearch} className="space-y-6">
+        <form action={analyzeIPO} className="space-y-6">
           <div className="relative">
             <input
               type="text"
+              name="ticker"
               value={ticker}
               onChange={(e) => setTicker(e.target.value.toUpperCase())}
               placeholder="FIG"
