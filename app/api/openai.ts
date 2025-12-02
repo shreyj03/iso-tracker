@@ -37,12 +37,12 @@ export async function getIPOAnalysis(ticker: string) {
     - If the ticker belongs to a recent IPO, prioritize that.
     - If the ticker is ambiguous (e.g., used on multiple exchanges), prefer the major US exchange (NYSE/NASDAQ) listing.
     
-    Step 2: Craft an in-depth analysis of this SPECIFIC company's IPO.
+    Step 2: Craft an in-depth analysis of this SPECIFIC company's stock.
     Your analysis must include:
-    - A clear, well-reasoned section outlining the potential advantages (pros) of the IPO.
-    - A distinct, well-reasoned section describing potential disadvantages (cons) of the IPO.
+    - A clear, well-reasoned section outlining the potential advantages (pros) of the stock.
+    - A distinct, well-reasoned section describing potential disadvantages (cons) of the stock.
     - A concise description of the company, its business model, and what it does.
-    - A final quantifiable IPO attractiveness score between 1 and 100, justified by your prior reasoning.
+    - A final quantifiable stock attractiveness score between 1 and 100, justified by your prior reasoning.
 
     Reflect step-by-step on all publicly available data relevant to THIS specific company. Consider financials, growth prospects, competitive landscape, sector trends, management team, risk factors, and market sentiment. 
 
@@ -86,7 +86,7 @@ export async function getIPOAnalysis(ticker: string) {
 
     return JSON.parse(content);
   } catch (error) {
-    console.error("Error fetching IPO analysis:", error);
+    console.error("Error fetching stock analysis:", error);
     return null;
   }
 }

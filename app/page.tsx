@@ -9,7 +9,7 @@ export default function Home() {
             LAUNCH
           </h1>
           <p className="text-lg md:text-xl font-light tracking-wide mb-12">
-            View Upcoming IPOs and Analyzations
+            AI-Powered Stock Analysis
           </p>
           <Link href="/search">
             <button className="px-12 py-3 border-2 border-white text-white font-light tracking-widest hover:bg-white hover:text-black transition-all duration-300 uppercase">

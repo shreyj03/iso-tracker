@@ -21,7 +21,7 @@ export default async function ReportPage({ params }: PageProps) {
           href="/"
           className="px-8 py-4 bg-[#b0dee9] text-black rounded-full font-light text-sm tracking-wide hover:opacity-90 transition-opacity"
         >
-          SEARCH ANOTHER IPO
+          SEARCH ANOTHER STOCK
         </Link>
       </div>
     );
@@ -111,7 +111,7 @@ export default async function ReportPage({ params }: PageProps) {
             href="/"
             className="flex items-center justify-center w-[294px] h-[51px] bg-[#b0dee9] rounded-full text-black text-base font-light tracking-wide hover:opacity-90 transition-opacity"
           >
-            SEARCH ANOTHER IPO
+            SEARCH ANOTHER STOCK
           </Link>
         </div>
       </main>

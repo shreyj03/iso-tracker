@@ -26,7 +26,7 @@ export default function SearchPage() {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-light tracking-widest text-gray-800 mb-2">
-            ENTER IPO TICKER
+            ENTER STOCK TICKER
           </h2>
         </div>
 
@@ -38,7 +38,7 @@ export default function SearchPage() {
               name="ticker"
               value={ticker}
               onChange={(e) => setTicker(e.target.value.toUpperCase())}
-              placeholder="FIG"
+              placeholder="OKLO"
               className="w-full px-6 py-4 bg-white/50 backdrop-blur-sm border border-gray-300 
                          rounded-lg text-center text-lg font-light tracking-wider text-gray-800
                          placeholder:text-black-400 focus:outline-none focus:ring-2 
@@ -71,7 +71,7 @@ export default function SearchPage() {
           </div>
         </form>
         <div className="text-center text-base text-gray-800 font-medium">
-          <p>Enter a company ticker to view IPO information</p>
+          <p>Enter a company ticker to view stock analysis</p>
         </div>
       </div>
     </div>
