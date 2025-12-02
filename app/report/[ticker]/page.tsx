@@ -1,5 +1,5 @@
 import React from "react";
-import { getIPOAnalysis } from "@/app/actions";
+import { getIPOAnalysis } from "@/app/lib/ipo-service";
 import Link from "next/link";
 
 interface PageProps {

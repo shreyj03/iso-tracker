@@ -1,22 +1,9 @@
-"use server";
-
 import OpenAI from "openai";
-import { redirect } from "next/navigation";
 
+// Shared instance or create new one per call
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-export async function analyzeIPO(formData: FormData) {
-  const ticker = formData.get("ticker") as string;
-
-  if (!ticker) {
-    throw new Error("Ticker is required");
-  }
-
-  // navigate to results page with ticker as query param to show loading state or results
-  redirect(`/report/${ticker}`);
-}
 
 export async function getIPOAnalysis(ticker: string) {
   if (!process.env.OPENAI_API_KEY) {

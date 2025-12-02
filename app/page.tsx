@@ -1,5 +1,5 @@
 import React from "react";
-import { analyzeIPO } from "./actions";
+import { analyzeIPO } from "@/app/api/actions";
 
 export default function Home() {
   return (
