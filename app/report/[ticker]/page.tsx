@@ -108,10 +108,10 @@ export default async function ReportPage({ params }: PageProps) {
 
         <div className="mt-16">
           <Link 
-            href="/"
+            href="/search"
             className="flex items-center justify-center w-[294px] h-[51px] bg-[#b0dee9] rounded-full text-black text-base font-light tracking-wide hover:opacity-90 transition-opacity"
           >
-            SEARCH ANOTHER STOCK
+            ANALYZE ANOTHER STOCK
           </Link>
         </div>
       </main>
