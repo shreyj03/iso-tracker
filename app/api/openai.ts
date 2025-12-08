@@ -3,13 +3,17 @@
 import OpenAI from "openai";
 import { redirect } from "next/navigation";
 
+// configure openai client with environment variable
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// handle form submission for ipo analysis
 export async function analyzeIPO(formData: FormData) {
+  // extract ticker symbol from form data
   const ticker = formData.get("ticker") as string;
 
+  // validate that a ticker was provided
   if (!ticker) {
     throw new Error("Ticker is required");
   }
@@ -20,14 +24,18 @@ export async function analyzeIPO(formData: FormData) {
   // Better pattern for Next.js: Pass data via URL or use a client component wrapper.
   // Let's keep it simple: redirect to /report/[ticker]
   
+  // redirect user to the dynamic report page
   redirect(`/report/${ticker}`);
 }
 
+// core function to generate stock analysis using openai
 export async function getIPOAnalysis(ticker: string) {
+  // verify api key configuration
   if (!process.env.OPENAI_API_KEY) {
     throw new Error("OpenAI API key is not configured");
   }
 
+    // define the prompt for the ai model
     const prompt = `You are a financial analyst specializing in IPOs and public equity.
     
     Target Ticker: ${ticker}
@@ -72,20 +80,25 @@ export async function getIPOAnalysis(ticker: string) {
     }`;
 
   try {
+    // execute the completion request to openai
+    // use gpt-4o model for better analysis quality
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o", // or gpt-3.5-turbo depending on budget/access
+      model: "gpt-4o", 
       messages: [
         { role: "system", content: "You are a helpful financial analyst assistant. Output JSON only." },
         { role: "user", content: prompt },
       ],
-      response_format: { type: "json_object" },
+      response_format: { type: "json_object" }, // enforce json response format
     });
 
+    // extract content from the response
     const content = completion.choices[0].message.content;
     if (!content) throw new Error("No content returned from OpenAI");
 
+    // parse the json response into an object
     return JSON.parse(content);
   } catch (error) {
+    // log any errors during the process
     console.error("Error fetching stock analysis:", error);
     return null;
   }
