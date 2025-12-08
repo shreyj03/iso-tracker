@@ -1,28 +1,24 @@
 'use client';
+
+// Search Bar made by Shrey JAin
+
 import Link from 'next/link';
 import { useState } from 'react';
-// import { useRouter } from 'next/navigation';
 import { analyzeIPO } from '../api/openai';
 
 export default function SearchPage() {
   const [ticker, setTicker] = useState('');
-  // const router = useRouter();
-
-  // const handleSearch = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   if (!ticker.trim()) return;
-  //   console.log('Searching for ticker:', ticker);
-  //   router.push(`/results?ticker=${ticker}`);
-  // };
 
   return (
     <div className="min-h-screen bg-[#C5E8E8] flex flex-col items-center justify-center px-4">
+      {/* LAUNCH logo link - returns to home page */}
       <Link href='/'>
       <div className="absolute top-8 left-8">
         <h1 className="text-2xl font-light tracking-wider text-gray-800">LAUNCH</h1>
       </div>
       </Link>
 
+      {/* Main content container - centered on page  */}
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-light tracking-widest text-gray-800 mb-2">
@@ -30,13 +26,14 @@ export default function SearchPage() {
           </h2>
         </div>
 
-         {/* Search Bar */}
+         {/*  Search form - uses Server Action for submission*/}
         <form action={analyzeIPO} className="space-y-6">
           <div className="relative">
             <input
               type="text"
               name="ticker"
               value={ticker}
+              // Convert input to uppercase as user types
               onChange={(e) => setTicker(e.target.value.toUpperCase())}
               placeholder="OKLO"
               className="w-full px-6 py-4 bg-white/50 backdrop-blur-sm border border-gray-300 
@@ -52,8 +49,10 @@ export default function SearchPage() {
                          bg-gray-800 hover:bg-gray-700 rounded-full
                          transition-colors duration-200
                          disabled:opacity-50 disabled:cursor-not-allowed"
+              // Disable button if no ticker is entered
               disabled={!ticker.trim()}
             >
+              {/* Search icon SVG - made with the help of claude */}
               <svg
                 className="w-4 h-4 text-white"
                 fill="none"
